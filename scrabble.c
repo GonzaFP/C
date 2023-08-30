@@ -1,3 +1,6 @@
+/* 
+ ! A program that determines the winner of a short scrabble-like game, where two players each enter their word, and the higher scoring player wins.
+*/
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -12,24 +15,29 @@ int main(void)
   int score1 = compute_score(word1);
   int score2 = compute_score(word2);
 
-printf("score2 %d\n", score2);
-printf("score1 %d\n", score1);
-  if (score1 > score2)
-  {
-   printf("Player1 wins\n");
-  }
-  else if (score2 > score1)
-  {
-   printf("Player2 wins\n");
-  }
-  else
-  {
-   printf("Tie\n");
-  }
-}
+ // ! determing winner.
+  printf("score2 %d\n", score2);
+  printf("score1 %d\n", score1);
+   if (score1 > score2)
+   {
+    printf("Player1 wins\n");
+   }
+   else if (score2 > score1)
+   {
+    printf("Player2 wins\n");
+   }
+   else
+   {
+    printf("Tie\n");
+   }
+ }
 
 int compute_score(char word[])
 {
+
+ /**
+  * ! each letter of alpha corresponds to a point in points array.
+ */
  char alpha[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
  int score = 0;
  int length = strlen(word);
@@ -38,6 +46,9 @@ int compute_score(char word[])
  {
     for (int i = 0; i < 26 ; i++)
     {
+
+     // ! ignore non letter characters but add capitalize each letter and add to score.
+
       if ((word[j] >= 'a' || word[j] <= 'z') || (word[j] >= 'A' && word[j] <= 'Z'))
       {
         if (toupper(word[j])  == alpha[i])
